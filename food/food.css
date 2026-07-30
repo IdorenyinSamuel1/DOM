@@ -1,0 +1,107 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f5f5f5;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:20px 0;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.nav-links{
+    list-style:none;
+    gap:20px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:black;
+}
+
+.hamburger{
+    font-size:2rem;
+}
+
+.hero{
+    text-align:center;
+    padding:40px 0;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* MOBILE-FIRST MEDIA QUERIES */
+
+/* Base styles - these apply to ALL screens (including mobile) */
+
+.nav-links {
+    display: none;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.hero h1 {
+    font-size: 2rem;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+
+    .nav-links {
+        display: flex;
+    }
+
+    .hamburger{
+        display:none;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+}
+
+/* WIDE DESKTOP */
+@media (min-width: 1440px) {
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
