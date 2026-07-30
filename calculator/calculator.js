@@ -60,7 +60,9 @@ const inputDigit = (digit) => {
         else{
             currentValue = currentValue + digit;
         }
-    }    
+    }  
+    
+    updateDisplay();
 }
 
 const inputOperator = (op) => {
@@ -100,3 +102,9 @@ const clear = () => {
     operator = null;
     shouldResetDisplay = false;
 }
+const updateDisplay = () => {
+    const display = document.querySelector("#display");
+    display.textContent = currentValue;
+}
+
+updateDisplay();
