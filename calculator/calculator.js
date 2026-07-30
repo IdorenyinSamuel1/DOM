@@ -43,7 +43,60 @@
 // });
 
 
-const currentValue = "0";
-const previousValue = "";
-const operator = null;
-const shouldResetDisplay = false;
+let currentValue = "0";
+let previousValue = "";
+let operator = null;
+let shouldResetDisplay = false;
+
+const inputDigit = (digit) => {
+    if (shouldResetDisplay) {
+        currentValue = String(digit);
+        shouldResetDisplay = false;
+    }
+    else{
+        if (currentValue === "0") {
+            currentValue = String(digit);      
+        }
+        else{
+            currentValue = currentValue + digit;
+        }
+    }    
+}
+
+const inputOperator = (op) => {
+    previousValue = currentValue;
+    operator = op;
+    shouldResetDisplay = true;
+}
+
+const calculate = () => {
+    const prev = parseFloat(previousValue);
+    const curr = parseFloat(currentValue);
+
+    let result;
+
+    if (operator === "+") {
+        result = prev + curr;
+    }
+    else if (operator === "-") {
+        result = prev - curr;
+    }else if (operator === "*") {
+        result = prev * curr;
+    }else if (operator === "/") {
+        if (curr === 0) {
+            currentValue = "cannot divide by zero";
+            return;
+        } 
+            result = prev / curr;
+    }
+
+    currentValue = String();
+    operator = null;
+}
+
+const clear = () => {
+    currentValue = "0";
+    previousValue = "";
+    operator = null;
+    shouldResetDisplay = false;
+}
