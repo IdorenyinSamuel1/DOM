@@ -86,17 +86,17 @@ const calculate = () => {
         result = prev * curr;
     }else if (operator === "/") {
         if (curr === 0) {
-            currentValue = "cannot divide by zero";
+            currentValue = "error";
             return;
         } 
             result = prev / curr;
     }
 
-    currentValue = String();
+    currentValue = String(result);
     operator = null;
 }
 
-const clear = () => {
+const resetCalculator = () => {
     currentValue = "0";
     previousValue = "";
     operator = null;
@@ -108,3 +108,33 @@ const updateDisplay = () => {
 }
 
 updateDisplay();
+
+
+//connect digit buttons into inputDigit function
+const digits = document.querySelectorAll(".digit");
+digits.forEach((button) => {
+    button.addEventListener('click', () => {
+        inputDigit(button.textContent);
+    });
+}); 
+
+//connecting operator buttons into inputOperator function
+const operators = document.querySelectorAll(".operator");
+operators.forEach((button) => {
+    button.addEventListener('click', () => {
+        inputOperator(button.textContent);
+    });
+});
+
+// connecting equal button into calculate function
+const equal = document.querySelector(".equals");
+equal.addEventListener('click', () => {
+    calculate();
+    updateDisplay();
+});
+
+const clears = document.querySelector(".clear");
+clears.addEventListener('click', () => {
+    resetCalculator();
+    updateDisplay();
+});
